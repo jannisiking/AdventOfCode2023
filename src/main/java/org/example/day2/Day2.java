@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface Day2 {
 
-    final Integer MAX_CUBES_RED = 12;
-    final Integer MAX_CUBES_GREEN = 13;
-    final Integer MAX_CUBES_BLUE = 14;
+    Integer MAX_CUBES_RED = 12;
+    Integer MAX_CUBES_GREEN = 13;
+    Integer MAX_CUBES_BLUE = 14;
 
     static String day2(int part){
         String result = "";
@@ -20,7 +20,10 @@ public interface Day2 {
                 games.add(Game.createFromLine(line));
             }
 
-            if(part == 1) result = part1(games);
+            switch (part){
+                case 1: result = part1(games);
+                case 2: result = part2(games);
+            }
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -36,7 +39,6 @@ public interface Day2 {
                 if(reveal.getGreen()!=null && reveal.getGreen()>MAX_CUBES_GREEN) isPossible = false;
                 if(reveal.getBlue()!=null && reveal.getBlue()>MAX_CUBES_BLUE) isPossible = false;
             }
-
             if(isPossible) gamesThatArePossible.add(game);
         }
 
@@ -45,6 +47,24 @@ public interface Day2 {
         for(Game game : gamesThatArePossible){
             result += game.getGameNumber();
         }
+        return result.toString();
+    }
+
+    static String part2(List<Game> games){
+        Integer result = 0;
+
+        for(Game game: games){
+            Integer minNeedRed = 0;
+            Integer minNeedGreen = 0;
+            Integer minNeedBlue = 0;
+            for( Reveal reveal : game.getReveals()){
+                if(reveal.getRed() != null && reveal.getRed() > minNeedRed) minNeedRed = reveal.getRed();
+                if(reveal.getGreen() != null && reveal.getGreen() > minNeedGreen) minNeedGreen = reveal.getGreen();
+                if(reveal.getBlue() != null && reveal.getBlue() > minNeedBlue) minNeedBlue = reveal.getBlue();
+            }
+            result += (minNeedRed * minNeedBlue * minNeedGreen);
+        }
+
         return result.toString();
     }
 
