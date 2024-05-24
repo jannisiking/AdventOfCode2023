@@ -1,6 +1,6 @@
 package org.example;
 
-import static org.example.Day1.day1;
+import static org.example.day1.Day1.day1;
 import static org.example.day2.Day2.day2;
 
 public class Main {
