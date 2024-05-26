@@ -16,7 +16,7 @@ public class Main {
                 result = day2(Integer.parseInt(args[1]));
                 break;
             case "3":
-                result = day3(Integer.parseInt(args[1]));
+                result = day3(Integer.parseInt(args[1]), "src/main/resources/day3.txt");
                 break;
         }
 
