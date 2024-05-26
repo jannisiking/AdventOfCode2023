@@ -24,7 +24,7 @@ public interface Day3 {
                     result = part1(numberFields, signFields);
                     break;
                 case 2:
-                    result = "Part2";
+                    result = part2(numberFields, signFields);
                     break;
             }
         } catch (Exception e) {
@@ -70,7 +70,7 @@ public interface Day3 {
     private static List<SignField> detectSignFieldsOfLine(String line, Integer y) {
         ArrayList<SignField> result = new ArrayList<>();
         String[] characters = line.split("");
-        List<String> signChars = List.of("%","=","*","#","$","&","/","-","+","@",",");
+        List<String> signChars = List.of("%", "=", "*", "#", "$", "&", "/", "-", "+", "@", ",");
         for (int x = 0; x < characters.length; x++) {
             if (signChars.contains(characters[x])) {
                 result.add(
@@ -95,9 +95,25 @@ public interface Day3 {
         }
         numberFieldsWithContactToSign.forEach(System.out::println);
         Integer resultSum = 0;
-        for(NumberField numberField: numberFieldsWithContactToSign){
+        for (NumberField numberField : numberFieldsWithContactToSign) {
             resultSum += numberField.value;
         }
         return resultSum.toString();
+    }
+
+    private static String part2(List<NumberField> numberFields, List<SignField> signFields) {
+        List<SignField> filteredStars = signFields.stream().filter(signField -> signField.sign.equals('*')).toList();
+        Integer result = 0;
+        for (SignField starField : filteredStars) {
+            ArrayList<NumberField> numberFieldsWithContactToStarField = new ArrayList<>();
+            for (NumberField numberField : numberFields) {
+                if (numberField.hasContactToThisCoordiante(starField.coordinate))
+                    numberFieldsWithContactToStarField.add(numberField);
+            }
+            if (numberFieldsWithContactToStarField.size() == 2) {
+                result += numberFieldsWithContactToStarField.get(0).value * numberFieldsWithContactToStarField.get(1).value;
+            }
+        }
+        return result.toString();
     }
 }

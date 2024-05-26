@@ -14,7 +14,7 @@ class Day3Test {
 
     @Test
     void testPart2WithSampleData(){
-        String result = Day3.day3(1, "src/test/resources/day3_part2.txt");
+        String result = Day3.day3(2, "src/test/resources/day3_part2.txt");
         assertThat(result).isEqualTo("467835");
     }
 
