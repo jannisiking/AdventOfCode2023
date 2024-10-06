@@ -10,7 +10,7 @@ public class Main {
 
         switch (args[0]){
             case "1":
-                result = day1(Integer.parseInt(args[1]));
+                result = day1(Integer.parseInt(args[1]), "src/main/resources/day1.txt");
                 break;
             case "2":
                 result = day2(Integer.parseInt(args[1]));

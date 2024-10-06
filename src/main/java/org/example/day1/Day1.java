@@ -7,9 +7,9 @@ import java.util.Set;
 
 public interface Day1 {
 
-    static String day1(int part) {
+    static String day1(int part, String filePath) {
         Integer result = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/day1.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             for (String line : br.lines().toList()) {
                 Integer evaluatedLine = evaluateLine(line, part);
                 result += evaluatedLine;
