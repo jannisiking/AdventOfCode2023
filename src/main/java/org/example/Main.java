@@ -13,7 +13,7 @@ public class Main {
                 result = day1(Integer.parseInt(args[1]), "src/main/resources/day1.txt");
                 break;
             case "2":
-                result = day2(Integer.parseInt(args[1]));
+                result = day2(Integer.parseInt(args[1]), "src/main/resources/day2.txt");
                 break;
             case "3":
                 result = day3(Integer.parseInt(args[1]), "src/main/resources/day3.txt");

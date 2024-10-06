@@ -11,10 +11,10 @@ public interface Day2 {
     Integer MAX_CUBES_GREEN = 13;
     Integer MAX_CUBES_BLUE = 14;
 
-    static String day2(int part){
+    static String day2(int part, String filePath){
         String result = "";
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/day2.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             ArrayList<Game> games = new ArrayList<>();
             for (String line : br.lines().toList()) {
                 games.add(Game.createFromLine(line));
