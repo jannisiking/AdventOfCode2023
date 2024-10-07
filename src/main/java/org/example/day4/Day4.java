@@ -11,7 +11,18 @@ import java.util.List;
 
 public interface Day4 {
 
-    static String day4(int part, String filePath) {
-        return "";
+    static List<Card> createCardsFromFileInput(String filePath){
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            List<String> lines = br.lines().toList();
+            ArrayList<Card> cards = new ArrayList<>();
+
+            for(String line:lines){
+                cards.add(Card.createCardFromInput(line));
+            }
+            return cards;
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return List.of();
     }
 }
