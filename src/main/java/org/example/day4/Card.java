@@ -27,4 +27,17 @@ public class Card {
                 .build();
 
     }
+
+    private List<Integer> getNumbersInBothLists(){
+        return winningNumbers
+                .stream()
+                .filter(winningNumber -> numbersYouHave.contains(winningNumber))
+                .toList();
+    }
+
+    public Double calculatePointsOfCard(){
+        List<Integer> numbersInBothLists = this.getNumbersInBothLists();
+        if(numbersInBothLists.isEmpty()) return 0d;
+        return Math.pow(2, (numbersInBothLists.size()-1));
+    }
 }
