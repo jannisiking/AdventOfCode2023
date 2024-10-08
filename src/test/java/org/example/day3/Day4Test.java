@@ -33,4 +33,10 @@ class Day4Test {
         assertThat(card.calculatePointsOfCard()).isEqualTo(8d);
     }
 
+    @Test
+    public void canCalculatePointsOfPart1(){
+        Double result = Day4.part1("src/test/resources/day4.txt");
+        assertThat(result).isEqualTo(21568d);
+    }
+
 }

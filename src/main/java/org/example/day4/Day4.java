@@ -11,6 +11,14 @@ import java.util.List;
 
 public interface Day4 {
 
+    static Double part1(String filePath){
+        Double result = 0d;
+        for(Card card: createCardsFromFileInput(filePath)){
+            result += card.calculatePointsOfCard();
+        }
+        return result;
+    }
+
     static List<Card> createCardsFromFileInput(String filePath){
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             List<String> lines = br.lines().toList();
